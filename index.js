@@ -21,7 +21,7 @@ app.use(session({
 app.set('port', port);
 
 // Routes
-
+app.use('/api', require('./src/routes/api'));
 
 app.listen(app.get('port'), ()=>{
     console.log(`http://localhost:${app.get('port')}/`);
