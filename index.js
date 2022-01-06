@@ -23,6 +23,10 @@ app.set('port', port);
 // Routes
 app.use('/api', require('./src/routes/api'));
 
+app.get('*', (req, res)=>{
+    res.sendFile(path.join('src', 'public', 'index.html'));
+});
+
 app.listen(app.get('port'), ()=>{
     console.log(`http://localhost:${app.get('port')}/`);
 });
