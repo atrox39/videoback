@@ -12,7 +12,7 @@ const movies_middleware = async function (req, res, next) {
         .then((files) => {
             if (files.length > 0) {
                 files.map((file, i) => {
-                    if (!fs.existsSync(file.path)) {
+                    if (!fs.existsSync(file.serverPath)) {
                         Movie.findOneAndDelete({ _id: file._id }).then(
                             (del) => {}
                         );
@@ -30,6 +30,7 @@ const movies_middleware = async function (req, res, next) {
             let mbSize = (open.byteLength / 1024 / 1024).toPrecision(3);
             const actual = {
                 title: file,
+                serverPath: path.join(moviesPath, file),
                 path: '/movies/' + file,
                 size: mbSize,
             };

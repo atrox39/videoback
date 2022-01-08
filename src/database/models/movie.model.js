@@ -8,6 +8,10 @@ module.exports.Movie = model("Movie", new Schema({
         maxlength: 120,
         require: true
     },
+    serverPath:{
+        type: String,
+        require: true
+    },
     path:{
         type: String,
         required: true
